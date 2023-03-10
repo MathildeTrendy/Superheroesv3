@@ -31,7 +31,7 @@ public class SuperheroRepository {
                 int human = rst.getInt("is_human");
                 double strength = rst.getDouble("strength");
 
-                System.out.println("test4");
+                System.out.println(heroId + heroName+realName+creationYear+superPower+human+strength);
 
                 Superhero createdSuperhero = new Superhero(heroId,heroName,realName,creationYear,superPower,human,strength);
                 System.out.println("test10");
@@ -43,6 +43,7 @@ public class SuperheroRepository {
         }
 
         System.out.println("test5");
+
     return listOfHeroes;
     }
 
