@@ -19,7 +19,7 @@ public class SuperheroController {
         this.superheroService = superheroService;
     }
 
-    @GetMapping("/")
+    @GetMapping()
     public ArrayList<Superhero> getAllHeroes(){
         return superheroService.getSuperhero();
     }

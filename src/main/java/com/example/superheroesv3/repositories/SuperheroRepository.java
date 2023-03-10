@@ -12,28 +12,37 @@ public class SuperheroRepository {
         ArrayList<Superhero>listOfHeroes = new ArrayList();
         try (
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/superhero", "root", "Mathmilo1996")) {
+            System.out.println("test2");
             String SQL= "SELECT * FROM superhero;";
+
+            System.out.println("test1");
 
             Statement stmt = con.createStatement();
 
+            System.out.println("test3");
             ResultSet rst = stmt.executeQuery(SQL);
             System.out.println("Forbundet til Database");
             while(rst.next()) {
-                int heroId = rst.getInt(1);
-                String heroName = rst.getString(2);
-                String realName = rst.getString(3);
-                int creationYear = rst.getInt(5);
-                String superPower = rst.getString(4);
-                int human = rst.getInt(6);
-                double strength = rst.getDouble(7);
+                int heroId = rst.getInt("superhero_id");
+                String heroName = rst.getString("hero_name");
+                String realName = rst.getString("real_name");
+                int creationYear = rst.getInt("creation_year");
+                String superPower = rst.getString("superpower");
+                int human = rst.getInt("is_human");
+                double strength = rst.getDouble("strength");
+
+                System.out.println("test4");
 
                 Superhero createdSuperhero = new Superhero(heroId,heroName,realName,creationYear,superPower,human,strength);
+                System.out.println("test10");
                 listOfHeroes.add(createdSuperhero);
             }
         } catch (SQLException e) {
+            System.out.println("test6");
             throw new RuntimeException(e);
         }
 
+        System.out.println("test5");
     return listOfHeroes;
     }
 
