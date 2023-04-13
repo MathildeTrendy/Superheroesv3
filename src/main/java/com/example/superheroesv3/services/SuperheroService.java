@@ -28,6 +28,10 @@ public class SuperheroService {
         return superheltRepository.getSuperheroBy("superhero_id", Integer.toString(id));
     }
 
+    public ArrayList<Superhero> getNamesAndYear() {
+        return superheltRepository.getAllSuperheroes();
+    }
+
     public Superhero createSuperhero(SuperheroInput superheroInput) {
         int id = superheltRepository.createSuperhero(superheroInput);
 

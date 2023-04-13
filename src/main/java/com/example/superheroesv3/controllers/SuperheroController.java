@@ -31,6 +31,11 @@ public class SuperheroController {
     public Superhero getByName(@PathVariable("name") String name) {
         return superheroService.getSuperheroByName(name);
     }
+    @GetMapping("/hero_name/{name}")
+    public ArrayList<Superhero> getByNamesAndYear(@PathVariable("hero_name") String name) {
+        return superheroRepository.getNamesAndYear();
+    }
+
     @GetMapping("/id/{id}")
     public Superhero getSuperheroByID(@PathVariable("id") int id) {
         return superheroService.getSuperheroByID(id);
@@ -51,4 +56,7 @@ public class SuperheroController {
     public Superhero delete(@PathVariable("id") int id, @RequestBody SuperheroInput superheroInput) {
         return superheroService.deleteSuperhero(id, superheroInput);
     }
+
+
+
 }

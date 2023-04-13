@@ -40,6 +40,31 @@ public class SuperheroRepository {
         return listOfHeroes;
     }
 
+    public ArrayList<Superhero> getNamesAndYear() {
+        ArrayList<Superhero> listOfHeroes = new ArrayList();
+        try (
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/superhero", "root", "Mathmilo1996")
+        ) {
+            String SQL = "SELECT * FROM superhero;";
+            Statement stmt = con.createStatement();
+
+            ResultSet rst = stmt.executeQuery(SQL);
+            System.out.println("Forbundet til Database");
+            while (rst.next()) {
+                String heroName = rst.getString("hero_name");
+                String realName = rst.getString("real_name");
+                int creationYear = rst.getInt("creation_year");
+
+
+                System.out.println(heroName + realName + creationYear);
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return listOfHeroes;
+    }
+
 
     public Superhero getSuperheroBy(String field, String value) {
         try (
